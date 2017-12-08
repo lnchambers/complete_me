@@ -1,0 +1,16 @@
+{
+  "Unit Tests": {
+    "coverage": {
+      "/Users/zacharypalmquist/turing/1module/projects/complete_me/lib/complete_me.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1512776458
+  }
+}
