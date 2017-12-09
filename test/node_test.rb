@@ -12,7 +12,7 @@ class NodeTest < Minitest::Test
   def test_it_accepts_data
     node = Node.new("data")
 
-    assert_equal "data", node.data
+    assert_equal "data", node.letter
   end
 
   def test_that_child_node_is_nil
