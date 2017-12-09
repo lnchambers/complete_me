@@ -5,14 +5,12 @@ require 'pry'
    attr_reader :root
 
    def initialize
-#Setting alphabet for the rest of the 
+#Setting alphabet for the rest of the trie
      @root = Node.new(Array ("a".."z"))
    end
 #Insert calls on the Node method insert_traverse
-   def insert(data)
-      node = Node.new(data)
-      binding.pry
-      node.insert_traverse(data)
+   def insert(data, current_node = @root)
+      @root.get_data(data)
    end
 
    def count

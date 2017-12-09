@@ -1,17 +1,13 @@
 class Node
 
-  attr_reader :data, :child
+  attr_accessor :subscript
+  attr_reader :data, :children
 
 #Attributes of all nodes
-  def initialize(data, child = nil)
+  def initialize(data = nil, child = [])
     @data = data
-    @child = child
+    @children = child
+    @subscript = 0
   end
-
-#creating a smart node traversal method. Will need insert method
-  def insert_traverse(data)
-    child = Node.new(data, child)
-  end
-
-
+  
 end
