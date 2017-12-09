@@ -16,4 +16,3 @@ class Node
     @children[node.letter] = node
   end
 end
- 
