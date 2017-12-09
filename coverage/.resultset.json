@@ -1,0 +1,96 @@
+{
+  "Unit Tests": {
+    "coverage": {
+<<<<<<< HEAD
+      "/Users/zacharypalmquist/turing/1module/projects/complete_me/lib/complete_me.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+=======
+      "/Users/lchambers/turing/1module/complete_me/lib/complete_me.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+>>>>>>> e3afd8c0728db1ea8b84721eb580ec7c1527814d
+        3,
+        null,
+        null,
+        1,
+        1,
+<<<<<<< HEAD
+        null,
+        null,
+        1,
+=======
+        1,
+        0,
+        0,
+        null,
+>>>>>>> e3afd8c0728db1ea8b84721eb580ec7c1527814d
+        1,
+        1,
+        null,
+        null,
+        null,
+<<<<<<< HEAD
+=======
+        null,
+        1,
+>>>>>>> e3afd8c0728db1ea8b84721eb580ec7c1527814d
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+<<<<<<< HEAD
+      "/Users/zacharypalmquist/turing/1module/projects/complete_me/lib/node.rb": [
+=======
+      "/Users/lchambers/turing/1module/complete_me/lib/node.rb": [
+>>>>>>> e3afd8c0728db1ea8b84721eb580ec7c1527814d
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        3,
+        3,
+        3,
+        null,
+        null,
+<<<<<<< HEAD
+        null
+      ]
+    },
+    "timestamp": 1512856367
+=======
+        null,
+        null
+      ]
+    },
+    "timestamp": 1512857498
+>>>>>>> e3afd8c0728db1ea8b84721eb580ec7c1527814d
+  }
+}

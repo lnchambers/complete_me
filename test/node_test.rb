@@ -12,13 +12,24 @@ class NodeTest < Minitest::Test
   def test_it_accepts_data
     node = Node.new("data")
 
-    assert_equal "data", node.data
+    assert_equal "data", node.letter
   end
 
-  def test_that_child_node_is_nil
+  def test_that_child_node_is_empty_array
     node = Node.new("string")
 
-    assert_nil node.child
+    assert_instance_of Array, node.child
+    assert_equal [], node.child
+  end
+
+  def test_that_child_node_creates_new_nodes
+    node = Node.new("abc")
+    node.child << "a" << "b" << "c"
+    node.branch_create
+
+    assert_equal "a", node.next_node.data
+    assert_equal "b", node.next_node.next_node.data
+    assert_equal "c", node.next_node.next_node.next_node.data
   end
 
 
