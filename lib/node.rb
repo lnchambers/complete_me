@@ -1,14 +1,15 @@
 class Node
+  attr_reader :letter,
+              :children
 
-  attr_accessor :subscript
-  attr_reader :data, :children
-
-#Attributes of all nodes
-  def initialize(data = nil, child = [])
-    @data = data
-    @children = child
-    @subscript = 0
+  def initialize(letter = nil)
+    @letter       = letter
+    @children     = Hash.new
+    @final_letter = false
   end
 
+  def end_of_word
+    @final_letter = true
+  end
 
 end
