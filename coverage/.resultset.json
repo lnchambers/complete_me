@@ -1,0 +1,18 @@
+{
+  "Unit Tests": {
+    "coverage": {
+      "/Users/lchambers/turing/1module/complete_me/lib/complete_me.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1512777790
+  }
+}
