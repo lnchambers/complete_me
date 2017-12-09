@@ -15,7 +15,7 @@ require 'pry'
        Node.new(letter)
      end
      #next, send array of new nodes and set word into dictionary
-   end
+   end 
 
    def create_word(node_list, parent = @root)
      #set final node to var
@@ -33,7 +33,7 @@ require 'pry'
      node = node_list.shift
      #use recursion to place each letter (node) into the trie
      place_word(node_list, parent.children[node.letter]) if key_exists(node, parent)
-     
+
 
      def key_exists?(node, parent)
        parent.children.has_key?(node.letter)
