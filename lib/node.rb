@@ -9,5 +9,6 @@ class Node
     @children = child
     @subscript = 0
   end
-  
+
+
 end

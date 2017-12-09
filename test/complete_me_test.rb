@@ -22,11 +22,11 @@ class CompleteMeTest < Minitest::Test
 
   def test_that_insert_creates_new_node
     complete_me = CompleteMe.new
-    complete_me.insert("abc")
+    complete_me.insert("a")
 
 
-    binding.pry
-    assert_equal ["a", "b", "c"], complete_me.root.children.data
+    # binding.pry
+    assert_equal ["a"], complete_me.root.children[0].data
     # assert_instance_of Node, complete_me.root.children[0]
     assert_instance_of Array, complete_me.root.children
   end
