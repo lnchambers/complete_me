@@ -11,4 +11,5 @@ class Node
   def end_of_word
     @final_letter = true
   end
+
 end

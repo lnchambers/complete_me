@@ -20,11 +20,13 @@ require_relative 'node'
    def create_word(node_list, parent = @root)
      #set final node to var
      final_node = node_list.last
-     #create hash
-   end
+     #create hash of nodes
+     existing_node = parent.children[node.letter]
+
 
 
    def count
+     @word_count
    end
 
    def suggest()
