@@ -26,7 +26,7 @@ class NodeTest < Minitest::Test
     node = Node.new("abc")
     node.child << "a" << "b" << "c"
     node.branch_create
-    
+
     assert_equal "a", node.next_node.data
     assert_equal "b", node.next_node.next_node.data
     assert_equal "c", node.next_node.next_node.next_node.data
