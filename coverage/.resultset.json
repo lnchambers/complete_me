@@ -3,6 +3,8 @@
     "coverage": {
       "/Users/lchambers/turing/1module/complete_me/lib/complete_me.rb": [
         1,
+        1,
+        1,
         null,
         1,
         null,
@@ -10,9 +12,44 @@
         2,
         null,
         null,
+        1,
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/lchambers/turing/1module/complete_me/lib/node.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        4,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1512777790
+    "timestamp": 1512781107
   }
 }

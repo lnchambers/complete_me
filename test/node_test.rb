@@ -15,6 +15,12 @@ class NodeTest < Minitest::Test
     assert_equal "data", node.data
   end
 
+  def test_that_child_node_is_nil
+    node = Node.new("string")
+
+    assert_nil node.child
+  end
+
 
 
 end
