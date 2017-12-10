@@ -16,6 +16,7 @@ class CompleteMe
    end
    #next, send array of new nodes and set word into dictionary
    place_word(prepped_word)
+   @word_count += 1
  end
 
  def create_word(node_list, parent = @root)
