@@ -1,4 +1,5 @@
 require 'pry'
+require "csv"
 require_relative "node"
 
 class CompleteMe
@@ -54,13 +55,18 @@ class CompleteMe
     place_word(node_list, node)
   end
 
-  def populate_from_txt_file(input)
-    File.open(input).readlines.each { |word| insert(word.chomp) }
-  end
-
   def populate(input)
     input = input.gsub("\r\n", "\n").split("\n")
     input.each { |word| insert(word) }
+  end
+
+  def populate_from_txt_file(file_path)
+    File.open(file_path).readlines.each { |word| insert(word.chomp) }
+  end
+
+  def populate_from_csv_file(file_path)
+    contents = CSV.open file_path, headers: true, header_converters: :symbol
+    contents.each { |row| insert(row[:full_address]) }
   end
 
   def count
