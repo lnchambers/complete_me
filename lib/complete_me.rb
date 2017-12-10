@@ -85,7 +85,7 @@ class CompleteMe
     prepped_word = full_format(word)
     node = traverse_down_trie(prepped_word)
     return [] if node.nil?
-    find_all_children_words(node, word.down)
+    find_all_children_words(node, word.downcase)
     all_words = @word_holder
     @word_holder = Array.new
     all_words
