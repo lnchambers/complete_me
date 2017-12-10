@@ -21,11 +21,10 @@ class NodeTest < Minitest::Test
     assert_equal "a", node.letter
   end
 
+
   def test_that_child_node_is_nil_and_add_child_adds_children
     node = Node.new
     node_1 = Node.new("a")
-
-    assert_instance_of Hash, node.children
     assert_empty node.children
 
     node.add_child(node_1)

@@ -14,7 +14,7 @@ class CompleteMeTest < Minitest::Test
     complete_me = CompleteMe.new
 
     assert_instance_of Node, complete_me.root
-    assert_equal 0, complete_me.word_count
+    assert_instance_of Hash, complete_me.root.children
   end
 
   def test_word_downcase_downcases_given_word
@@ -39,7 +39,7 @@ class CompleteMeTest < Minitest::Test
   #   assert_equal
   # end
 
-  def test_that_insert_creates_new_node
+  def test_that_insert_changes_child_in_node
     complete_me = CompleteMe.new
     complete_me.insert("abc")
 

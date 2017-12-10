@@ -1,6 +1,7 @@
 require 'pry'
 require_relative "node"
 
+
 class CompleteMe
   attr_reader :root,
               :word_count
