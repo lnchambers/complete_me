@@ -54,9 +54,13 @@ class CompleteMe
     place_word(node_list, node)
   end
 
-  def populate(input)
-    # input = "../complete_me_spec_harness/test/" + input.to_s
+  def populate_from_txt_file(input)
     File.open(input).readlines.each { |word| insert(word.chomp) }
+  end
+
+  def populate(input)
+    input = input.gsub("\r\n", "\n").split("\n")
+    input.each { |word| insert(word) }
   end
 
   def count

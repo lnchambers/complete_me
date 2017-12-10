@@ -74,9 +74,9 @@ class CompleteMeTest < Minitest::Test
     assert_equal 5, complete_me.word_count
   end
 
-  def test_populate_add_words
+  def test_populate_add_words_from_txt_file
     complete_me = CompleteMe.new
-    complete_me.populate("/usr/share/dict/words")
+    complete_me.populate_from_txt_file("/usr/share/dict/words")
 
     assert_equal 235886, complete_me.count
 
@@ -98,7 +98,7 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_can_load_from_dictionary_and_suggest_array_of_mulitiple_words_and_is_case_insensitive
     complete_me = CompleteMe.new
-    complete_me.populate("/usr/share/dict/words")
+    complete_me.populate_from_txt_file("/usr/share/dict/words")
 
     assert_equal 235886, complete_me.count
 
@@ -107,5 +107,13 @@ class CompleteMeTest < Minitest::Test
     assert_equal ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"], complete_me.suggest("PIZ")
 
     assert_equal [], complete_me.suggest("ppp")
+  end
+
+  def test_populate_inserts_words_from_string
+    complete_me = CompleteMe.new
+    complete_me.populate("pize\npizza\npizzeria")
+    assert_equal 3, complete_me.count
+    complete_me.populate("luke\nzac\ncameron")
+    assert_equal 6, complete_me.count
   end
 end
