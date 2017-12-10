@@ -10,25 +10,19 @@ class CompleteMeTest < Minitest::Test
     assert_instance_of CompleteMe, complete_me
   end
 
-  def test_root_has_desired_attributes
+  def test_complete_me_has_desired_attributes
     complete_me = CompleteMe.new
 
     assert_instance_of Node, complete_me.root
-    assert_instance_of Array, complete_me.root.data
-    assert_equal ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
-                  "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x",
-                  "y", "z"], complete_me.root.data
+    assert_equal 0, complete_me.word_count
   end
 
   def test_that_insert_creates_new_node
     complete_me = CompleteMe.new
     complete_me.insert("a")
 
-
-    # binding.pry
-    assert_equal ["a"], complete_me.root.children[0].data
-    # assert_instance_of Node, complete_me.root.children[0]
-    assert_instance_of Array, complete_me.root.children
+    # assert_equal "a", complete_me.root.children.key
+    assert_instance_of Node, complete_me.root.children.values
   end
 
 end

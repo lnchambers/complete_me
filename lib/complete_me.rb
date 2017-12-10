@@ -2,7 +2,8 @@ require_relative "node"
 require 'pry'
 
  class CompleteMe
-   attr_reader :root
+   attr_reader :root,
+               :word_count
 
    def initialize
      @root       = Node.new
@@ -21,10 +22,11 @@ require 'pry'
    def create_word(node_list, parent = @root)
      #set final node to var
      final_node = node_list.last
+     # children = {letter => final_node}
      #create hash of nodes
-     existing_node = parent.children[node.letter]
-
-
+     existing_node = parent.children[final_node.letter]
+     binding.pry
+   end
 
    def count
      @word_count
