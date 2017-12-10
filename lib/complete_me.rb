@@ -64,6 +64,7 @@ class CompleteMe
   end
 
   def traverse_down_trie(node_list, parent = @root)
+    return nil if parent.nil?
     return @node_holder.last if node_list.empty?
     node = node_list.shift
     @node_holder << parent.children[node.letter]
