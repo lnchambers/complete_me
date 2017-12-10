@@ -105,5 +105,7 @@ class CompleteMeTest < Minitest::Test
     assert_instance_of Array, complete_me.suggest("piz")
     assert_equal ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"], complete_me.suggest("piz")
     assert_equal ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"], complete_me.suggest("PIZ")
+
+    assert_equal [], complete_me.suggest("ppp")
   end
 end
