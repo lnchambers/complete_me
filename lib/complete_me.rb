@@ -55,9 +55,9 @@ class CompleteMe
     place_word(node_list, node)
   end
 
-  def populate(input)
-    input = input.gsub("\r\n", "\n").split("\n")
-    input.each { |word| insert(word) }
+  def populate(file_path)
+    contents = file_path.gsub("\r\n", "\n").split("\n")
+    contents.each { |word| insert(word) }
   end
 
   def populate_from_txt_file(file_path)
@@ -102,6 +102,14 @@ class CompleteMe
     all_words
   end
 
-  def dictionary
+  def word_exists?(word)
+    prepped_word = full_format(word)
+    node = traverse_down_trie(prepped_word)
+    return false if node.nil?
+    node_holder = @node_holder
+    @node_holder = Array.new
+    node_holder.last.is_a_word? ? true : false
   end
+
+  #i think we need to create another file to run everything here where select would live
 end
