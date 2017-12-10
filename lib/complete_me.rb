@@ -6,8 +6,10 @@ class CompleteMe
               :word_count
 
   def initialize
-    @root       = Node.new
-    @word_count = 0
+    @root        = Node.new
+    @word_count  = 0
+    @node_holder = Array.new
+    @word_holder = Array.new
   end
 
   def insert(word, current_node = @root)
@@ -53,7 +55,7 @@ class CompleteMe
   end
 
   def populate(input)
-    input = "../complete_me_spec_harness/test/" + input.to_s
+    # input = "../complete_me_spec_harness/test/" + input.to_s
     File.open(input).readlines.each { |word| insert(word.chomp) }
   end
 
@@ -61,7 +63,32 @@ class CompleteMe
     @word_count
   end
 
-  def suggest()
+  def traverse_down_trie(node_list, parent = @root)
+    return @node_holder.last if node_list.empty?
+    node = node_list.shift
+    @node_holder << parent.children[node.letter]
+    traverse_down_trie(node_list, parent.children[node.letter])
+  end
+
+  def find_all_children_words(node, word)
+    @word_holder << word if node.is_a_word?
+    if !node.children.empty?
+      node.children.each do |letter, child_node|
+        new_word = word
+        new_word += letter
+        find_all_children_words(child_node, new_word)
+      end
+    end
+  end
+
+  def suggest(word)
+    prepped_word = full_format(word)
+    node = traverse_down_trie(prepped_word)
+    return [] if node.nil?
+    find_all_children_words(node, word.down)
+    all_words = @word_holder
+    @word_holder = Array.new
+    all_words
   end
 
   def dictionary

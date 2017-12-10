@@ -16,4 +16,8 @@ class Node
   def add_child(node)
     @children[node.letter] = node
   end
+
+  def is_a_word?
+    @final_letter
+  end
 end
