@@ -1,15 +1,16 @@
 class Node
   attr_reader :letter,
-              :children
+              :children,
+              :final_letter
 
   def initialize(letter = nil)
     @letter       = letter
-    @children     = Hash.new(0)
+    @children     = Hash.new
     @final_letter = false
   end
 
   def end_of_word
-    @final_letter = true
+    @final_letter = !@final_letter
   end
 
   def add_child(node)
