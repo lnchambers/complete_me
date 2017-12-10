@@ -5,37 +5,35 @@ class CompleteMe
   attr_reader :root,
               :word_count
 
- def initialize
-   @root       = Node.new
-   @word_count = 0
- end
+  def initialize
+    @root       = Node.new
+    @word_count = 0
+  end
 
- def insert(word, current_node = @root)
-   prepped_word = full_format(word)
-   place_word(prepped_word)
-   @word_count += 1
- end
+  def insert(word, current_node = @root)
+    prepped_word = full_format(word)
+    place_word(prepped_word)
+    @word_count += 1
+  end
 
- def downcase_word(word)
-   word.downcase
- end
+  def downcase_word(word)
+    word.downcase
+  end
 
- def create_array_of_nodes(word)
-   word.chars.map { |letter| Node.new(letter) }
- end
+  def create_array_of_nodes(word)
+    word.chars.map { |letter| Node.new(letter) }
+  end
 
- def full_format(word)
-   create_array_of_nodes(downcase_word(word))
- end
+  def full_format(word)
+    create_array_of_nodes(downcase_word(word))
+  end
 
- def create_word(node_list, parent = @root)
-   final_node = node_list.last
-   # binding.pry
-   # existing_node should be value of key until end
-   existing_node = parent.children[final_node.letter]
-   final_node.end_of_word    if existing_node.nil?
-   existing_node.end_of_word if !existing_node.nil?
- end
+  def create_word(node_list, parent = @root)
+    final_node = node_list.last
+    existing_node = parent.children[final_node.letter]
+    final_node.end_of_word    if existing_node.nil?
+    existing_node.end_of_word if !existing_node.nil?
+  end
 
   def place_word(node_list, parent = @root)
     return if node_list.empty?
@@ -55,10 +53,8 @@ class CompleteMe
   end
 
   def populate(input)
-    input = "./test/fixtures/" + input.to_s
-    File.open(input).readlines.each do |word|
-      insert(word.chomp)
-    end
+    input = "../complete_me_spec_harness/test/" + input.to_s
+    File.open(input).readlines.each { |word| insert(word.chomp) }
   end
 
   def count

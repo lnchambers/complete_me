@@ -33,11 +33,19 @@ class CompleteMeTest < Minitest::Test
     assert_equal "d", complete_me.create_array_of_nodes(downcased_word).last.letter
   end
 
-  # def test_full_format_creates_array_of_node_instances
-  #   complete_me = CompleteMe.new
-  #
-  #   assert_equal
-  # end
+  def test_full_format_creates_array_of_node_instances
+    complete_me = CompleteMe.new
+
+    assert_instance_of Array, complete_me.full_format("word")
+    assert_instance_of Node, complete_me.full_format("word").first
+    assert_instance_of Node, complete_me.full_format("word")[1]
+    assert_instance_of Node, complete_me.full_format("word")[2]
+    assert_instance_of Node, complete_me.full_format("word")[3]
+    assert_equal "w", complete_me.full_format("word").first.letter
+    assert_equal "o", complete_me.full_format("word")[1].letter
+    assert_equal "r", complete_me.full_format("word")[2].letter
+    assert_equal "d", complete_me.full_format("word")[3].letter
+  end
 
   def test_that_insert_creates_new_node
     complete_me = CompleteMe.new
@@ -66,9 +74,9 @@ class CompleteMeTest < Minitest::Test
 
   def test_populate_add_words
     complete_me = CompleteMe.new
-    complete_me.populate("mock_dict.txt")
-    assert_equal 10, complete_me.count
+    complete_me.populate("medium.txt")
+    assert_equal 1000, complete_me.count
     complete_me.insert("whatever")
-    assert_equal 11, complete_me.word_count
+    assert_equal 1001, complete_me.word_count
   end
 end
