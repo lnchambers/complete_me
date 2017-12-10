@@ -12,4 +12,7 @@ class Node
     @final_letter = true
   end
 
+  def add_child(node)
+    @children[node.letter] = node
+  end
 end
