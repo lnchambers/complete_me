@@ -18,9 +18,7 @@ class NodeTest < Minitest::Test
   def test_that_child_node_is_nil
     node = Node.new("string")
 
-    assert_nil node.child
+    assert_instance_of Hash, node.children
   end
-
-
 
 end
