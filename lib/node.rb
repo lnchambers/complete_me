@@ -4,7 +4,7 @@ class Node
 
   def initialize(letter = nil)
     @letter       = letter
-    @children     = Hash.new
+    @children     = Hash.new(0)
     @final_letter = false
   end
 

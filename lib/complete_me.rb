@@ -2,7 +2,8 @@ require_relative "node"
 require 'pry'
 
 class CompleteMe
- attr_reader :root
+  attr_reader :root,
+              :word_count
 
  def initialize
    @root       = Node.new
@@ -38,26 +39,25 @@ class CompleteMe
    add_child(node, node_list, parent) if!key_exists(node, parent)
  end
 
- def key_exists?(node, parent)
-   parent.children.has_key?(node.letter)
- end
+  def key_exists?(node, parent)
+    parent.children.has_key?(node.letter)
+  end
 
   def add_child(node, node_list, parent)
     parent.add_child(node)
     place_word(node_list, node)
   end
 
- def count
-   @word_count
- end
+  def count
+    @word_count
+  end
 
- def suggest()
- end
+  def suggest()
+  end
 
- def dictionary
- end
+  def dictionary
+  end
 
- def populate()
- end
-
+  def populate()
+  end
 end
