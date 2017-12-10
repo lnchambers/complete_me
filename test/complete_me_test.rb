@@ -52,6 +52,8 @@ class CompleteMeTest < Minitest::Test
     complete_me.insert("abc")
 
     assert_equal "a", complete_me.root.children.first.first
+    assert_equal "b", complete_me.root.children.first[1].children.first[0]
+    assert_equal "c", complete_me.root.children.first[1].children.first[1].children.first[0]
     assert_instance_of Array, complete_me.root.children.values
   end
 
@@ -74,9 +76,34 @@ class CompleteMeTest < Minitest::Test
 
   def test_populate_add_words
     complete_me = CompleteMe.new
-    complete_me.populate("medium.txt")
-    assert_equal 1000, complete_me.count
+    complete_me.populate("/usr/share/dict/words")
+
+    assert_equal 235886, complete_me.count
+
     complete_me.insert("whatever")
-    assert_equal 1001, complete_me.word_count
+
+    assert_equal 235887, complete_me.word_count
+  end
+
+  def test_suggest_can_suggest_a_word
+    complete_me = CompleteMe.new
+
+    complete_me.insert("pizza")
+
+    assert_equal "p", complete_me.root.children.first.first
+    assert_equal 1,complete_me.count
+    assert_instance_of Array, complete_me.suggest("piz")
+    assert_equal ["pizza"], complete_me.suggest("piz")
+  end
+
+  def test_it_can_load_from_dictionary_and_suggest_array_of_mulitiple_words_and_is_case_insensitive
+    complete_me = CompleteMe.new
+    complete_me.populate("/usr/share/dict/words")
+
+    assert_equal 235886, complete_me.count
+
+    assert_instance_of Array, complete_me.suggest("piz")
+    assert_equal ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"], complete_me.suggest("piz")
+    assert_equal ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"], complete_me.suggest("PIZ")
   end
 end
