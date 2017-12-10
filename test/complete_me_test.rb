@@ -98,8 +98,8 @@ class CompleteMeTest < Minitest::Test
 
   def test_it_can_load_from_dictionary_and_suggest_array_of_mulitiple_words_and_is_case_insensitive
     complete_me = CompleteMe.new
-    complete_me.populate_from_txt_file("/usr/share/dict/words")
 
+    complete_me.populate_from_txt_file("/usr/share/dict/words")
     assert_equal 235886, complete_me.count
 
     assert_instance_of Array, complete_me.suggest("piz")
@@ -111,8 +111,10 @@ class CompleteMeTest < Minitest::Test
 
   def test_populate_inserts_words_from_string
     complete_me = CompleteMe.new
+
     complete_me.populate("pize\npizza\npizzeria")
     assert_equal 3, complete_me.count
+
     complete_me.populate("luke\nzac\ncameron")
     assert_equal 6, complete_me.count
   end
