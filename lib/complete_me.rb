@@ -23,7 +23,7 @@ require_relative 'node'
      #create hash of nodes
      existing_node = parent.children[node.letter]
 
-
+   end
 
    def count
      @word_count
