@@ -4,7 +4,7 @@ class Node
 
   def initialize(letter = nil)
     @letter       = letter
-    @children     = Hash.new
+    @children     = Hash.new(0)
     @final_letter = false
   end
 
@@ -12,4 +12,7 @@ class Node
     @final_letter = true
   end
 
+  def add_child(node)
+    @children[node.letter] = node
+  end
 end

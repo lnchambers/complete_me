@@ -18,6 +18,7 @@ class NodeTest < Minitest::Test
   def test_that_child_node_is_empty_array
     node = Node.new("string")
 
+<<<<<<< HEAD
     assert_instance_of Array, node.child
     assert_equal [], node.child
   end
@@ -30,8 +31,9 @@ class NodeTest < Minitest::Test
     assert_equal "a", node.next_node.data
     assert_equal "b", node.next_node.next_node.data
     assert_equal "c", node.next_node.next_node.next_node.data
+=======
+    assert_instance_of Hash, node.children
+>>>>>>> 44ad606510a2bd708b9040fa9e3608e03153aeb4
   end
-
-
 
 end

@@ -10,7 +10,7 @@ class CompleteMeTest < Minitest::Test
     assert_instance_of CompleteMe, complete_me
   end
 
-  def test_root_has_desired_attributes
+  def test_complete_me_has_desired_attributes
     complete_me = CompleteMe.new
 
     assert_instance_of Node, complete_me.root
@@ -21,18 +21,8 @@ class CompleteMeTest < Minitest::Test
     complete_me = CompleteMe.new
     complete_me.insert("a")
 
-    assert_equal ["a", "b", "c"], complete_me.root.child
-  end
-
-  def test_that_child_branches_makes_new_nodes
-    complete_me = CompleteMe.new
-    complete_me.insert("abc")
-
-
-    # binding.pry
-    assert_equal ["a"], complete_me.root.children[0].data
-    # assert_instance_of Node, complete_me.root.children[0]
-    assert_instance_of Array, complete_me.root.children
+    # assert_equal "a", complete_me.root.children.key
+    assert_instance_of Node, complete_me.root.children.values
   end
 
 end
