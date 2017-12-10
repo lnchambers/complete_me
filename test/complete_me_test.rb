@@ -118,4 +118,15 @@ class CompleteMeTest < Minitest::Test
     complete_me.populate("luke\nzac\ncameron")
     assert_equal 6, complete_me.count
   end
+
+  def test_populate_from_csv_inserts_full_address_from_file_path
+    complete_me = CompleteMe.new
+
+    complete_me.populate_from_csv_file("./test/fixtures/addresses.csv")
+    assert_equal 307001, complete_me.count
+    #the start of the first address is zipcode 17607
+    assert_equal "1", complete_me.root.children.first.first
+    assert_equal "7", complete_me.root.children.first[1].children.first[0]
+    assert_equal "6", complete_me.root.children.first[1].children.first[1].children.first[0]
+  end
 end
