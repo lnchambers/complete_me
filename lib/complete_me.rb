@@ -102,6 +102,4 @@ class CompleteMe
     all_words
   end
 
-  def dictionary
-  end
 end
