@@ -32,12 +32,14 @@ class CompleteMe
 
   def suggest(substring)
     if @selected[substring].nil?
-      suggested_words = @trie.suggest(substring)
+      @trie.suggest(substring)
     else
+      (weight_control(substring)+ @trie.suggest(substring)).uniq
+    end
   end
 
   def select(substring, selected_word)
-    return "Word not in dictionary" unless word_exists?(selected_word)
+    return "Word not in dictionary" unless @trie.word_exists?(selected_word)
     if @selected[substring].nil?
       @selected[substring] = {selected_word => 1}
     else

@@ -25,15 +25,15 @@ class Trie
 
   def downcase_word(word)
     word.downcase
-  end
+  endW#tested
 
   def create_array_of_nodes(word)
     word.chars.map { |letter| Node.new(letter) }
-  end
+  endW#tested
 
   def full_format(word)
     create_array_of_nodes(downcase_word(word))
-  end
+  endW#tested
 
   def create_word(node_list, parent = @root)
     final_node = node_list.last
@@ -99,10 +99,6 @@ class Trie
     find_all_children_words(node, word.downcase)
     all_words = @word_holder
     @word_holder = Array.new
-    if all_words.include?(@selected.keys)
-      all_words = all_words.delete(@selected[word])
-      all_words = all_words.unshift(@selected[word])
-    end
      all_words
   end
 
@@ -113,5 +109,5 @@ class Trie
     node_holder = @node_holder
     @node_holder = Array.new
     node_holder.last.is_a_word? ? true : false
-  end
+  end#tested
 end
