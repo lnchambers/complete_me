@@ -55,9 +55,9 @@ class CompleteMe
     place_word(node_list, node)
   end
 
-  def populate(input)
-    input = input.gsub("\r\n", "\n").split("\n")
-    input.each { |word| insert(word) }
+  def populate(file_path)
+    contents = file_path.gsub("\r\n", "\n").split("\n")
+    contents.each { |word| insert(word) }
   end
 
   def populate_from_txt_file(file_path)
@@ -101,5 +101,31 @@ class CompleteMe
     @word_holder = Array.new
     all_words
   end
+
+  def word_exists?(word)
+    prepped_word = full_format(word)
+    node = traverse_down_trie(prepped_word)
+    return false if node.nil?
+    node_holder = @node_holder
+    @node_holder = Array.new
+    node_holder.last.is_a_word? ? true : false
+  end
+
+=begin
+i think we need to create another file to run everything here where select would live
+the reason i'm thinking this line of logic is that we don't need the trie to actually know about
+any auto correct features, the trie is only the database framework that holds each word in the
+dictionary. to keep from breaking SRP, we should probably rename this file to dictionary
+or retrieval_trie and create a new complete_me class that runs the actual autocomplete
+feature. a hecka basic start to select is below, but it should be migrated to the new
+complete_me file
+=end
+
+
+  # def select(substring, selected_word)
+  #   return "Word not in dictionary" unless word_exists?(selected_word)
+  #
+  #
+  # end
 
 end
