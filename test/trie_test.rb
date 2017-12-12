@@ -98,6 +98,7 @@ class TrieTest < Minitest::Test
   end
 
   def test_load_from_dictionary_and_suggest_array_of_mulitiple_words_and_is_case_insensitive
+    skip
     trie = Trie.new
 
     trie.populate_from_txt_file("/usr/share/dict/words")
@@ -140,7 +141,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_word_exists_verifies_against_dictionary_and_is_case_insensitive
-    skip
     trie = Trie.new
     trie.populate_from_txt_file("/usr/share/dict/words")
 
@@ -149,6 +149,7 @@ class TrieTest < Minitest::Test
   end
 
   def test_that_words_can_be_deleted
+    skip
     trie = Trie.new
     trie.insert("pizza")
     trie.insert("pizzaria")
