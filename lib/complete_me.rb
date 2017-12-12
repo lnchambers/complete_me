@@ -38,6 +38,10 @@ class CompleteMe
     end
   end
 
+  def delete(word)
+    @trie.delete(word)
+  end
+
   def select(substring, selected_word)
     return "Word not in dictionary" unless @trie.word_exists?(selected_word)
     if @selected[substring].nil?

@@ -73,12 +73,12 @@ class Trie
     contents.each { |row| insert(row[:full_address]) }
   end
 
-  def traverse_down_trie(node_list, parent = @root)
+  def traverse_down_trie(prepped_word, parent = @root)
     return nil if parent.nil?
-    return @node_holder.last if node_list.empty?
-    node = node_list.shift
+    return @node_holder.last if prepped_word.empty?
+    node = prepped_word.shift
     @node_holder << parent.children[node.letter]
-    traverse_down_trie(node_list, parent.children[node.letter])
+    traverse_down_trie(prepped_word, parent.children[node.letter])
   end
 
   def find_all_children_words(node, word)
@@ -110,5 +110,21 @@ class Trie
     @node_holder = Array.new
     node_holder.last.is_a_word? ? true : false
   end
-  
+
+  def delete_traverse(split_word, parent = @root)
+    split_word.each do |letter|
+      if parent.children[letter]
+        parent = parent.children[letter]
+        delete_traverse(split_word)
+      end
+  end
+
+  def delete(word)
+    prepped_word = downcase_word(word)
+    split_word = prepped_word.chars
+    delete_traverse(split_word)
+    @word_count -= 1
+    node_holder.last.is_a_word? ? false : true
+  end
+
 end

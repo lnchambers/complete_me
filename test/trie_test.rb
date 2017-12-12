@@ -143,4 +143,20 @@ class TrieTest < Minitest::Test
     assert trie.word_exists?("PiZZa")
     refute trie.word_exists?("ppp")
   end
+
+  def test_that_words_can_be_deleted
+    trie = Trie.new
+    trie.insert("pizza")
+    trie.insert("pizzaria")
+    trie.insert("pizzacato")
+
+    assert_equal 3, trie.count
+
+    trie.delete("pizza")
+
+    assert_equal 2, trie.count
+
+  end
+
+
 end
