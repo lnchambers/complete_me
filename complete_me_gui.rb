@@ -7,6 +7,7 @@ cm.populate(dictionary)
 cm.populate_from_csv_file(addresses)
 
 Shoes.app(title: "CompleteMe", width: 550) do
+  background "#99ffcc".."#00b359"
   flow(margin: [15, 15, 15, 5]) do
     para("Enter the start of a word to see suggestions.")
   end
