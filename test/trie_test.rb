@@ -23,7 +23,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_create_array_of_nodes_creates_an_array_of_node_instances
-
     trie = Trie.new
 
     downcased_word = trie.downcase_word("word")
@@ -34,7 +33,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_full_format_creates_array_of_node_instances
-
     trie = Trie.new
 
     assert_instance_of Array, trie.full_format("word")

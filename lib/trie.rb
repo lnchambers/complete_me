@@ -1,4 +1,4 @@
-require 'pry'
+require "pry"
 require "csv"
 require_relative "node"
 
@@ -25,15 +25,15 @@ class Trie
 
   def downcase_word(word)
     word.downcase
-  end#tested
+  end
 
   def create_array_of_nodes(word)
     word.chars.map { |letter| Node.new(letter) }
-  end#tested
+  end
 
   def full_format(word)
     create_array_of_nodes(downcase_word(word))
-  end#tested
+  end
 
   def create_word(node_list, parent = @root)
     final_node = node_list.last
@@ -109,6 +109,6 @@ class Trie
     node_holder = @node_holder
     @node_holder = Array.new
     node_holder.last.is_a_word? ? true : false
-  end#tested
-
+  end
+  
 end
