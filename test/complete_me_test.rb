@@ -27,7 +27,7 @@ class CompleteMeTest < Minitest::Test
   def test_insert_creates_new_word
     complete_me = CompleteMe.new
 
-    new_word = complete_me.insert("new")
+    complete_me.insert("new")
 
     assert_equal "n", complete_me.trie.root.children.first.first
     assert_equal "e", complete_me.trie.root.children.first[1].children.first[0]
