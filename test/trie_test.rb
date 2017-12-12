@@ -1,5 +1,5 @@
-require 'test_helper'
-require '../lib/trie'
+require_relative 'test_helper'
+require './lib/trie'
 
 class TrieTest < Minitest::Test
 

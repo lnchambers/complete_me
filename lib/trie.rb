@@ -25,15 +25,15 @@ class Trie
 
   def downcase_word(word)
     word.downcase
-  endW#tested
+  end#tested
 
   def create_array_of_nodes(word)
     word.chars.map { |letter| Node.new(letter) }
-  endW#tested
+  end#tested
 
   def full_format(word)
     create_array_of_nodes(downcase_word(word))
-  endW#tested
+  end#tested
 
   def create_word(node_list, parent = @root)
     final_node = node_list.last
