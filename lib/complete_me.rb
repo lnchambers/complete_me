@@ -22,7 +22,7 @@ class CompleteMe
     @trie.populate(string)
   end
 
-  def poplulate_from_txt_file(file_path)
+  def populate_from_txt_file(file_path)
     @trie.populate_from_txt_file(file_path)
   end
 
@@ -43,11 +43,11 @@ class CompleteMe
     if @selected[substring].nil?
       @selected[substring] = {selected_word => 1}
     else
-      weight_adder
+      weight_adder(substring, selected_word)
     end
   end
 
-  def weight_adder
+  def weight_adder(substring, selected_word)
     if @selected[substring][selected_word]
       @selected[substring][selected_word] += 1
     else
@@ -60,3 +60,5 @@ class CompleteMe
     weighted_words.reverse!.map { |word| word[0] }
   end
 end
+
+completion = CompleteMe.new

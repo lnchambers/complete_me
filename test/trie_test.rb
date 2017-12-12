@@ -134,7 +134,7 @@ class TrieTest < Minitest::Test
 
     trie = Trie.new
 
-    trie.populate_from_csv_file("./test/fixtures/addresses.csv")
+    trie.populate_from_csv_file("./lib/data/addresses.csv")
     assert_equal 307001, trie.count
     #the start of the first address is zipcode 17607
     assert_equal "1", trie.root.children.first.first
@@ -151,7 +151,7 @@ class TrieTest < Minitest::Test
   end
 
   def test_word_exists_verifies_against_dictionary_and_is_case_insensitive
-    
+
     trie = Trie.new
     trie.populate_from_txt_file("/usr/share/dict/words")
 
