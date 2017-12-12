@@ -1,5 +1,5 @@
-require "pry"
-require_relative "trie"
+require "csv"
+require_relative 'trie'
 
 class CompleteMe
   attr_reader :trie,
@@ -38,6 +38,10 @@ class CompleteMe
     end
   end
 
+  def delete(word)
+    @trie.delete(word)
+  end
+
   def select(substring, selected_word)
     return "Word not in dictionary" unless @trie.word_exists?(selected_word)
     if @selected[substring].nil?
@@ -59,6 +63,5 @@ class CompleteMe
     weighted_words = @selected[substring].sort_by { |_, weight| weight }
     weighted_words.reverse!.map { |word| word[0] }
   end
-end
 
-completion = CompleteMe.new
+end
