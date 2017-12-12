@@ -90,7 +90,7 @@ class TrieTest < Minitest::Test
     trie.insert("pizza")
 
     assert_equal "p", trie.root.children.first.first
-    assert_equal 1,trie.count
+    assert_equal 1, trie.count
     assert_instance_of Array, trie.suggest("piz")
     assert_equal ["pizza"], trie.suggest("piz")
   end
@@ -146,16 +146,13 @@ class TrieTest < Minitest::Test
 
   def test_that_words_can_be_deleted
     trie = Trie.new
-    trie.insert("pizza")
-    trie.insert("pizzaria")
-    trie.insert("pizzacato")
-
-    assert_equal 3, trie.count
+    trie.populate_from_txt_file("/usr/share/dict/words")
 
     trie.delete("pizza")
 
-    assert_equal 2, trie.count
-
+    assert_equal 235885, trie.count
+    refute trie.word_exists?("pizza")
+    assert_equal ["pize", "pizzeria", "pizzicato", "pizzle"], trie.suggest("piz")
   end
 
 

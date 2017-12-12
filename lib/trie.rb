@@ -113,18 +113,31 @@ class Trie
 
   def delete_traverse(split_word, parent = @root)
     split_word.each do |letter|
-      if parent.children[letter]
+      if split_word.last == letter
+        parent.children[letter].end_of_word
+        @word_count -= 1
+      else
         parent = parent.children[letter]
-        delete_traverse(split_word)
       end
+    end
+    clean_up(split_word)
+  end
+
+  def clean_up(split_word, parent = @root)
+    split_word.count.times do
+      split_word.each do |letter|
+        if parent.children[letter].nil?
+          parent.children[letter] = Node.new
+        else
+          parent = parent.children[letter]
+        end
+      end
+    end
   end
 
   def delete(word)
     prepped_word = downcase_word(word)
     split_word = prepped_word.chars
     delete_traverse(split_word)
-    @word_count -= 1
-    node_holder.last.is_a_word? ? false : true
   end
-
 end

@@ -1,5 +1,5 @@
 require_relative "csv"
-require_relative "trie"
+require_relative 'trie'
 
 class CompleteMe
   attr_reader :trie,

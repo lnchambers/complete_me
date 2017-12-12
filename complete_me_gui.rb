@@ -1,4 +1,5 @@
 require './lib/complete_me'
+require './lib/node'
 
 cm = CompleteMe.new
 dictionary = File.read("/usr/share/dict/words")
@@ -9,7 +10,7 @@ Shoes.app(title: "CompleteMe", width: 550) do
     para("Enter the start of a word to see suggestions.")
   end
   flow(margin: [15, 0, 15, 15]) do
-    @prefix = edit_line
+    @word = edit_line
     @suggest_button = button "Suggest"
 
     button "Clear" do
@@ -19,7 +20,7 @@ Shoes.app(title: "CompleteMe", width: 550) do
 
   @suggest_button.click do
     @results.clear if @results
-    @suggestions = cm.suggest(@prefix.text)
+    @suggestions = cm.suggest(@word.text)
     @results = flow(margin: [15, 0, 15, 0]) do
       @suggestions.each do |word|
         para(
