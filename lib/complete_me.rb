@@ -62,3 +62,7 @@ class CompleteMe
 end
 
 completion = CompleteMe.new
+completion.populate_from_txt_file("/usr/share/dict/words")
+
+# completion.select("you", "you")
+p completion.suggest("youdendrift")
