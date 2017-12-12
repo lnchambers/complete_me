@@ -51,7 +51,7 @@ class CompleteMe
     end
   end
 
-  def weight_control(substring)
+  def weight_sorter(substring)
     weighted_words = @selected[substring].sort_by { |_, weight| weight }
     weighted_words.reverse!.map { |word| word[0] }
   end
