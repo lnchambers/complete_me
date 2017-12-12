@@ -1,4 +1,4 @@
-require_relative "csv"
+require "csv"
 require_relative 'trie'
 
 class CompleteMe

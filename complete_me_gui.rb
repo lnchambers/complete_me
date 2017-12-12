@@ -1,9 +1,10 @@
 require './lib/complete_me'
-require './lib/node'
 
 cm = CompleteMe.new
 dictionary = File.read("/usr/share/dict/words")
+addresses  = "../complete_me/data/addresses.csv"
 cm.populate(dictionary)
+cm.populate_from_csv_file(addresses)
 
 Shoes.app(title: "CompleteMe", width: 550) do
   flow(margin: [15, 15, 15, 5]) do
