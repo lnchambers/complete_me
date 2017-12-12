@@ -1,8 +1,8 @@
 class Node
   attr_reader   :letter,
-                :children,
+                :children
+  attr_accessor :weight,
                 :final_letter
-  attr_accessor :weight
 
   def initialize(letter = nil)
     @letter       = letter
