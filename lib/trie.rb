@@ -99,7 +99,7 @@ class Trie
     find_all_children_words(node, word.downcase)
     all_words = @word_holder
     @word_holder = Array.new
-     all_words
+    all_words
   end
 
   def word_exists?(word)
@@ -133,6 +133,8 @@ class Trie
         end
       end
     end
+=======
+>>>>>>> 2311f04dca7ebad7d9815357e4be0e36c70b5c65
   end
 
   def delete(word)

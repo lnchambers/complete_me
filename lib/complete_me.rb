@@ -34,7 +34,7 @@ class CompleteMe
     if @selected[substring].nil?
       @trie.suggest(substring)
     else
-      (weight_control(substring)+ @trie.suggest(substring)).uniq
+      (weight_sorter(substring)+ @trie.suggest(substring)).uniq
     end
   end
 
@@ -47,13 +47,26 @@ class CompleteMe
     if @selected[substring].nil?
       @selected[substring] = {selected_word => 1}
     else
-      @selected[substring][selected_word] ? @selected[substring][selected_word] += 1 : @selected[substring][selected_word] = 1
+      weight_adder(substring, selected_word)
     end
   end
 
+<<<<<<< HEAD
+=======
+  def weight_adder(substring, selected_word)
+    if @selected[substring][selected_word]
+      @selected[substring][selected_word] += 1
+    else
+      @selected[substring][selected_word] = 1
+    end
+  end
+
+>>>>>>> 2311f04dca7ebad7d9815357e4be0e36c70b5c65
   def weight_sorter(substring)
     weighted_words = @selected[substring].sort_by { |_, weight| weight }
     weighted_words.reverse!.map { |word| word[0] }
   end
 
 end
+
+completion = CompleteMe.new
