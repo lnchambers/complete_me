@@ -51,8 +51,6 @@ class CompleteMe
     end
   end
 
-<<<<<<< HEAD
-=======
   def weight_adder(substring, selected_word)
     if @selected[substring][selected_word]
       @selected[substring][selected_word] += 1
@@ -61,12 +59,9 @@ class CompleteMe
     end
   end
 
->>>>>>> 2311f04dca7ebad7d9815357e4be0e36c70b5c65
   def weight_sorter(substring)
     weighted_words = @selected[substring].sort_by { |_, weight| weight }
     weighted_words.reverse!.map { |word| word[0] }
   end
 
 end
-
-completion = CompleteMe.new

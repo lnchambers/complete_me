@@ -128,7 +128,7 @@ class TrieTest < Minitest::Test
 
   def test_populate_from_csv_inserts_full_address_from_file_path
     trie = Trie.new
-    trie.populate_from_csv_file("./lib/data/addresses.csv")
+    trie.populate_from_csv_file("./data/addresses.csv")
 
     assert_equal 307001, trie.count
     assert_equal "1", trie.root.children.first.first
@@ -150,7 +150,7 @@ class TrieTest < Minitest::Test
     assert trie.word_exists?("PiZZa")
     refute trie.word_exists?("ppp")
   end
-  
+
   def test_words_deleted_with_manual_insertion
     trie = Trie.new
     trie.insert("pizza")

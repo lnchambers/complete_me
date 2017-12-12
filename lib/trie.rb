@@ -133,8 +133,6 @@ class Trie
         end
       end
     end
-=======
->>>>>>> 2311f04dca7ebad7d9815357e4be0e36c70b5c65
   end
 
   def delete(word)
