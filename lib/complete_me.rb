@@ -22,7 +22,7 @@ class CompleteMe
     @trie.populate(string)
   end
 
-  def poplulate_from_txt_file(file_path)
+  def populate_from_txt_file(file_path)
     @trie.populate_from_txt_file(file_path)
   end
 

@@ -53,7 +53,7 @@ class NodeTest < Minitest::Test
     assert_instance_of Node, node.children.values.last
   end
 
-  def test_final_letter_defaults_to_false_and_can_be_changed_to_true_and_back_to_false
+  def test_final_letter_defaults_to_false_and_can_be_changed_to_true_and_back
     node = Node.new
     node_1 = Node.new("a")
     node_2 = Node.new("b")

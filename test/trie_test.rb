@@ -5,14 +5,12 @@ require_relative "../lib/node"
 class TrieTest < Minitest::Test
 
   def test_it_exists
-
     trie = Trie.new
 
     assert_instance_of Trie, trie
   end
 
   def test_trie_has_desired_attributes
-
     trie = Trie.new
 
     assert_instance_of Node, trie.root
@@ -20,14 +18,12 @@ class TrieTest < Minitest::Test
   end
 
   def test_word_downcase_downcases_given_word
-
     trie = Trie.new
 
     assert_equal "word", trie.downcase_word("WoRd")
   end
 
   def test_create_array_of_nodes_creates_an_array_of_node_instances
-
     trie = Trie.new
 
     downcased_word = trie.downcase_word("word")
@@ -38,7 +34,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_full_format_creates_array_of_node_instances
-
     trie = Trie.new
 
     assert_instance_of Array, trie.full_format("word")
@@ -53,7 +48,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_that_insert_creates_new_node
-
     trie = Trie.new
     trie.insert("abc")
 
@@ -64,7 +58,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_that_word_count_increases_after_insert
-
     trie = Trie.new
     trie.insert("abc")
 
@@ -82,7 +75,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_populate_add_words_from_txt_file
-
     trie = Trie.new
     trie.populate_from_txt_file("/usr/share/dict/words")
 
@@ -94,7 +86,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_suggest_can_suggest_a_word
-
     trie = Trie.new
 
     trie.insert("pizza")
@@ -106,7 +97,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_it_can_load_from_dictionary_and_suggest_array_of_mulitiple_words_and_is_case_insensitive
-
     trie = Trie.new
 
     trie.populate_from_txt_file("/usr/share/dict/words")
@@ -120,7 +110,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_populate_inserts_words_from_string
-
     trie = Trie.new
 
     trie.populate("pize\npizza\npizzeria")
@@ -131,7 +120,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_populate_from_csv_inserts_full_address_from_file_path
-
     trie = Trie.new
 
     trie.populate_from_csv_file("./test/fixtures/addresses.csv")
@@ -143,7 +131,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_downcase_word_downcases_word
-
     trie = Trie.new
 
     assert_equal "this is a downcased string", trie.downcase_word("tHIs iS a DOWncAseD stRINg")
@@ -151,7 +138,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_word_exists_verifies_against_dictionary_and_is_case_insensitive
-    
     trie = Trie.new
     trie.populate_from_txt_file("/usr/share/dict/words")
 
