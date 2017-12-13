@@ -1,7 +1,6 @@
 require_relative "test_helper"
 require_relative "../lib/trie"
 require_relative "../lib/node"
-require_relative "../lib/complete_me"
 
 class TrieTest < Minitest::Test
 
@@ -19,6 +18,7 @@ class TrieTest < Minitest::Test
   end
 
   def test_word_downcase_downcases_given_word
+
     trie = Trie.new
 
     assert_equal "word", trie.downcase_word("WoRd")
@@ -92,7 +92,7 @@ class TrieTest < Minitest::Test
     trie.insert("pizza")
 
     assert_equal "p", trie.root.children.first.first
-    assert_equal 1,trie.count
+    assert_equal 1, trie.count
     assert_instance_of Array, trie.suggest("piz")
     assert_equal ["pizza"], trie.suggest("piz")
   end
@@ -122,7 +122,6 @@ class TrieTest < Minitest::Test
 
   def test_populate_from_csv_inserts_full_address_from_file_path
     trie = Trie.new
-
     trie.populate_from_csv_file("./data/addresses.csv")
 
     assert_equal 307001, trie.count
@@ -146,7 +145,7 @@ class TrieTest < Minitest::Test
     refute trie.word_exists?("ppp")
   end
 
-  def test_that_words_can_be_deleted
+  def test_words_deleted_with_manual_insertion
     trie = Trie.new
     trie.insert("pizza")
     trie.insert("pizzaria")
@@ -157,6 +156,19 @@ class TrieTest < Minitest::Test
     trie.delete("pizza")
 
     assert_equal 2, trie.count
+  end
+
+  def test_that_words_can_be_deleted_from_dictionary
+    trie = Trie.new
+    trie.populate_from_txt_file("/usr/share/dict/words")
+
+
+    assert_equal 235886, trie.count
+
+    trie.delete("pizza")
+
+    assert_equal 235885, trie.count
+    refute trie.word_exists?("pizza")
   end
 
   def test_that_different_words_can_be_deleted
