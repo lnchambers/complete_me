@@ -6,7 +6,7 @@ addresses  = "../complete_me/data/addresses.csv"
 cm.populate(dictionary)
 cm.populate_from_csv_file(addresses)
 
-Shoes.app(title: "CompleteMe", width: 550) do
+Shoes.app(title: "CompleteMe", width: 700) do
   background "#00b359".."#99ffcc"
   image(
       "./data/rsz_1galaga_3.png",
@@ -20,7 +20,6 @@ Shoes.app(title: "CompleteMe", width: 550) do
     @word = edit_line
     @suggest_button = button "Suggest"
     @insert_button = button "Insert"
-
     button "Clear" do
       @results.clear
     end
@@ -42,10 +41,3 @@ Shoes.app(title: "CompleteMe", width: 550) do
     end
   end
 end
-# TODO need to make an add button.
-# TODO edit_line also clears after user selects a word.
-# TODO when user presses enter on keyboard the suggestions hits
-# TODO change color of link after word is highlighted
-# TODO set a "canvas size" for the GUI
-# TODO have a definition link for words
-# TODO make tab go over to next button
