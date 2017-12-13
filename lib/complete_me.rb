@@ -63,5 +63,4 @@ class CompleteMe
     weighted_words = @selected[substring].sort_by { |_, weight| weight }
     weighted_words.reverse!.map { |word| word[0] }
   end
-
 end

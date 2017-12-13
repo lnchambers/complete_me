@@ -6,20 +6,27 @@ addresses  = "../complete_me/data/addresses.csv"
 cm.populate(dictionary)
 cm.populate_from_csv_file(addresses)
 
-Shoes.app(title: "CompleteMe", width: 550) do
-  background "#99ffcc".."#00b359"
+Shoes.app(title: "CompleteMe", width: 700) do
+  background "#00b359".."#99ffcc"
+  image(
+      "./data/rsz_1galaga_3.png",
+      top: 1,
+      right: 20
+    )
   flow(margin: [15, 15, 15, 5]) do
     para("Enter the start of a word to see suggestions.")
   end
   flow(margin: [15, 0, 15, 15]) do
     @word = edit_line
     @suggest_button = button "Suggest"
-
+    @insert_button = button "Insert"
     button "Clear" do
       @results.clear
     end
   end
-
+  @insert_button.click do
+    cm.insert(@word.text)
+  end
   @suggest_button.click do
     @results.clear if @results
     @suggestions = cm.suggest(@word.text)
@@ -27,7 +34,7 @@ Shoes.app(title: "CompleteMe", width: 550) do
       @suggestions.each do |word|
         para(
           link(word, stroke: "black").click do
-            cm.select(@prefix.text, word)
+            cm.select(@word.text, word) && @results.clear
           end
         )
       end
