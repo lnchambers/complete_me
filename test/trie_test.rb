@@ -1,6 +1,7 @@
 require_relative "test_helper"
 require_relative "../lib/trie"
 require_relative "../lib/node"
+require_relative "../lib/complete_me"
 
 class TrieTest < Minitest::Test
 
@@ -75,7 +76,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_populate_add_words_from_txt_file
-    skip
     trie = Trie.new
     trie.populate_from_txt_file("/usr/share/dict/words")
 
@@ -98,7 +98,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_load_from_dictionary_and_suggest_array_of_mulitiple_words_and_is_case_insensitive
-    skip
     trie = Trie.new
 
     trie.populate_from_txt_file("/usr/share/dict/words")
@@ -122,10 +121,9 @@ class TrieTest < Minitest::Test
   end
 
   def test_populate_from_csv_inserts_full_address_from_file_path
-    skip
     trie = Trie.new
 
-    trie.populate_from_csv_file("./lib/data/addresses.csv")
+    trie.populate_from_csv_file("./data/addresses.csv")
 
     assert_equal 307001, trie.count
     assert_equal "1", trie.root.children.first.first
@@ -141,7 +139,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_word_exists_verifies_against_dictionary_and_is_case_insensitive
-
     trie = Trie.new
     trie.populate_from_txt_file("/usr/share/dict/words")
 
@@ -150,7 +147,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_that_words_can_be_deleted
-    skip
     trie = Trie.new
     trie.insert("pizza")
     trie.insert("pizzaria")
@@ -165,15 +161,35 @@ class TrieTest < Minitest::Test
 
   def test_that_different_words_can_be_deleted
     trie = Trie.new
+    complete_me = CompleteMe.new
+
     trie.insert("you")
-    trie.insert("yours")
     trie.insert("yourself")
-    trie.insert("yourselves")
+    trie.insert("your")
+    trie.insert("yours")
+    complete_me.select("you", "yourself")
 
     assert_equal 4, trie.count
 
     trie.delete("yourself")
 
     assert_equal 3, trie.count
+    refute_equal "yourself", complete_me.suggest("you")[0]
+
+    trie.delete("yours")
+
+    assert_equal 2, trie.count
+
+    trie.delete("you")
+
+    assert_equal 1, trie.count
+
+    trie.delete("your")
+
+    assert_equal 0, trie.count
+
+    trie.insert("you")
+
+    assert_equal 1, trie.count
   end
 end

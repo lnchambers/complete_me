@@ -38,16 +38,22 @@ class Trie
   def create_word(node_list, parent = @root)
     final_node = node_list.last
     existing_node = parent.children[final_node.letter]
-    final_node.end_of_word    if existing_node.nil?
-    existing_node.end_of_word if !existing_node.nil?
+    if existing_node.nil?
+      final_node.end_of_word
+    else
+      existing_node.end_of_word
+    end
   end
 
   def place_word(node_list, parent = @root)
     return if node_list.empty?
     create_word(node_list, parent) if node_list.length == 1
     node = node_list.shift
-    place_word(node_list, parent.children[node.letter]) if key_exists?(node, parent)
-    add_child(node, node_list, parent) if !key_exists?(node, parent)
+    if key_exists?(node, parent)
+      place_word(node_list, parent.children[node.letter])
+    else
+      add_child(node, node_list, parent)
+    end
   end
 
   def key_exists?(node, parent)
@@ -112,8 +118,12 @@ class Trie
   end
 
   def delete_traverse(split_word, parent = @root)
-    split_word.each do |letter|
-      if split_word.last == letter
+    split_word.map do |letter|
+      if parent.children[letter].children.empty? && split_word.last == letter
+        parent.children.delete(letter)
+        parent.end_of_word
+        @word_count -= 1
+      elsif split_word.last == letter
         parent.children[letter].end_of_word
         @word_count -= 1
       else

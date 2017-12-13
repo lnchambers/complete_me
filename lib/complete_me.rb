@@ -60,5 +60,3 @@ class CompleteMe
     weighted_words.reverse!.map { |word| word[0] }
   end
 end
-
-completion = CompleteMe.new
