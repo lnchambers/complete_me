@@ -1,17 +1,16 @@
-require_relative 'test_helper'
-require './lib/trie'
+require_relative "test_helper"
+require_relative "../lib/trie"
+require_relative "../lib/node"
 
 class TrieTest < Minitest::Test
 
   def test_it_exists
-
     trie = Trie.new
 
     assert_instance_of Trie, trie
   end
 
   def test_trie_has_desired_attributes
-
     trie = Trie.new
 
     assert_instance_of Node, trie.root
@@ -26,7 +25,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_create_array_of_nodes_creates_an_array_of_node_instances
-
     trie = Trie.new
 
     downcased_word = trie.downcase_word("word")
@@ -37,7 +35,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_full_format_creates_array_of_node_instances
-
     trie = Trie.new
 
     assert_instance_of Array, trie.full_format("word")
@@ -52,7 +49,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_that_insert_creates_new_node
-
     trie = Trie.new
     trie.insert("abc")
 
@@ -63,7 +59,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_that_word_count_increases_after_insert
-
     trie = Trie.new
     trie.insert("abc")
 
@@ -116,7 +111,6 @@ class TrieTest < Minitest::Test
   end
 
   def test_populate_inserts_words_from_string
-
     trie = Trie.new
 
     trie.populate("pize\npizza\npizzeria")
@@ -179,15 +173,35 @@ class TrieTest < Minitest::Test
 
   def test_that_different_words_can_be_deleted
     trie = Trie.new
+    complete_me = CompleteMe.new
+
     trie.insert("you")
-    trie.insert("yours")
     trie.insert("yourself")
-    trie.insert("yourselves")
+    trie.insert("your")
+    trie.insert("yours")
+    complete_me.select("you", "yourself")
 
     assert_equal 4, trie.count
 
     trie.delete("yourself")
 
     assert_equal 3, trie.count
+    refute_equal "yourself", complete_me.suggest("you")[0]
+
+    trie.delete("yours")
+
+    assert_equal 2, trie.count
+
+    trie.delete("you")
+
+    assert_equal 1, trie.count
+
+    trie.delete("your")
+
+    assert_equal 0, trie.count
+
+    trie.insert("you")
+
+    assert_equal 1, trie.count
   end
 end
