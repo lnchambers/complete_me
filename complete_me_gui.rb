@@ -7,10 +7,10 @@ cm.populate(dictionary)
 cm.populate_from_csv_file(addresses)
 
 Shoes.app(title: "CompleteMe", width: 550) do
-  background "#99ffcc".."#00b359"
+  background "#00b359".."#99ffcc"
   @complete_me_png = image(
       "./data/rsz_1galaga_3.png",
-      top: 0,
+      top: 1,
       right: 20
     )
   flow(margin: [15, 15, 15, 5]) do
@@ -24,7 +24,6 @@ Shoes.app(title: "CompleteMe", width: 550) do
       @results.clear
     end
   end
-
   @suggest_button.click do
     @results.clear if @results
     @suggestions = cm.suggest(@word.text)
@@ -32,10 +31,15 @@ Shoes.app(title: "CompleteMe", width: 550) do
       @suggestions.each do |word|
         para(
           link(word, stroke: "black").click do
-            cm.select(@prefix.text, word)
+            cm.select(@word.text, word) && @results.clear
+
+
           end
         )
       end
     end
   end
 end
+
+# TODO when user selects a word, cache of links is cleared.
+# TODO when user presses enter the suggestions hits
