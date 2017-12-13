@@ -1,4 +1,3 @@
-require "pry"
 require "csv"
 require_relative "node"
 
@@ -49,10 +48,6 @@ class Trie
     return if node_list.empty?
     create_word(node_list, parent) if node_list.length == 1
     node = node_list.shift
-    place_word_or_add_child(node, node_list, parent)
-  end
-
-  def place_word_or_add_child(node, node_list, parent = @root)
     if key_exists?(node, parent)
       place_word(node_list, parent.children[node.letter])
     else
@@ -122,8 +117,12 @@ class Trie
   end
 
   def delete_traverse(split_word, parent = @root)
-    split_word.each do |letter|
-      if split_word.last == letter
+    split_word.map do |letter|
+      if parent.children[letter].children.empty? && split_word.last == letter
+        parent.children.delete(letter)
+        parent.end_of_word
+        @word_count -= 1
+      elsif split_word.last == letter
         parent.children[letter].end_of_word
         @word_count -= 1
       else

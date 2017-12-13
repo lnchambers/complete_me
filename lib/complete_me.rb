@@ -1,5 +1,5 @@
-require "pry"
-require_relative "trie"
+require "csv"
+require_relative 'trie'
 
 class CompleteMe
   attr_reader :trie,
@@ -36,6 +36,10 @@ class CompleteMe
     else
       (weight_sorter(substring)+ @trie.suggest(substring)).uniq
     end
+  end
+
+  def delete(word)
+    @trie.delete(word)
   end
 
   def select(substring, selected_word)
