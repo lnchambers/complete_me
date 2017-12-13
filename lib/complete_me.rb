@@ -64,3 +64,9 @@ class CompleteMe
     weighted_words.reverse!.map { |word| word[0] }
   end
 end
+
+completion = CompleteMe.new
+completion.populate_from_txt_file("/usr/share/dict/words")
+
+# completion.select("you", "you")
+p completion.suggest("youdendrift")

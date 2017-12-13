@@ -70,4 +70,17 @@ class NodeTest < Minitest::Test
     refute node.children.values.first.final_letter
     refute node.children.values.last.final_letter
   end
+
+  def test_is_a_word_verifies_whether_input_is_in_dictionary
+    node = Node.new
+    node_1 = Node.new("a")
+
+    refute node_1.is_a_word?
+
+    node.add_child(node_1)
+
+    node_1.end_of_word
+
+    assert node_1.is_a_word?
+  end
 end
